@@ -100,6 +100,7 @@
                     <th>Id</th>
                     <th>Conjunta</th>
                     <th>Participantes</th>
+                    <th>Fecha fin</th>
                     <th>Enlace</th>
                     <th></th>
                 </tr>
@@ -109,8 +110,13 @@
                     <td>{{pack._id}}</td>
                     <td><a href="#!/pack-detail/{{pack._id}}">{{pack.name}}</a></td>
                     <td>{{pack.users.length}}</td>
-                    <td><a href="{{pack.link}}" target="_blank">{{pack.link}}</a></td>
+                    <td >
+                        <span style="color:blue" ng-show="!pack.finished">{{pack.dateEnd | date}}</span>
+                        <span style="color:red" ng-show="pack.finished">Finalizado</span>
+                    </td>
+                    <td><a href="{{pack.link}}" target="_blank" >Enlace</a></td>
                     <td>
+                        <button class="btn btn-outline btn-xs" ng-class="{'btn-warning': !pack.finished, 'btn-danger': pack.finished}" ng-click="finishPack(pack)"><i class="fa" ng-class="{'fa-check': !pack.finished, 'fa-times': pack.finished}"></i></button>
                         <button class="btn btn-outline btn-success btn-xs" ng-click="editItem(pack)"><i class="fa fa-pencil"></i></button>
                         <button class="btn btn-outline btn-danger btn-xs" ng-click="deleteItem(pack)"><i class="fa fa-trash-o"></i></button>
                     </td>

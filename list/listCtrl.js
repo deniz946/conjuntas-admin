@@ -47,14 +47,32 @@ angular.module('myApp.list', ['ngRoute'])
 
 		};
 
+		$scope.finishPack = function(pack){
+			let params = {
+				id: pack._id,
+				status: !pack.finished
+			}
+
+			$http.put(API + 'pack/change/status/', params)
+			.then(function(response){
+				response = response.data;
+				if(response.err) swal('ERROR', response.msg, 'error');
+				else{
+					swal('OK', response.msg, 'success');
+					getPacks();
+				}
+			})
+		}
+
 		$scope.save = function () {
-			if (!$scope.selectedItem.name || !$scope.selectedItem.link || !$scope.selectedItem.email_title) {
+			if (!$scope.selectedItem.name || !$scope.selectedItem.link || !$scope.selectedItem.email_title|| !$scope.selectedItem.dateEnd) {
 				swal('Campos obligatorios', LANG.invalid, 'warning');
 			} else {
 				let params = {
 					name: $scope.selectedItem.name,
 					link: $scope.selectedItem.link,
-					email_title: $scope.selectedItem.email_title
+					email_title: $scope.selectedItem.email_title,
+					dateEnd: $scope.selectedItem.dateEnd
 				};
 				if ($scope.editing) params.id = $scope.selectedItem._id;
 
@@ -64,6 +82,7 @@ angular.module('myApp.list', ['ngRoute'])
 					if (err) swal(err)
 					swal(done.data.msg);
 					getPacks();
+					delete $scope.selectedItem.dateEnd;
 					$scope.adding = false;
 					$scope.editing = false;
 				});

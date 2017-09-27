@@ -37,8 +37,8 @@ config(['$locationProvider', '$routeProvider', '$httpProvider','$qProvider', fun
 
 }]);
 
-//app.constant('API', "http://localhost:3000/");
-app.constant('API', "http://codigodiario.me:3000/");
+app.constant('API', "http://localhost:3000/");
+// app.constant('API', "http://codigodiario.me:3000/");
 
 var literals = {
   "invalid": "Algunos de los campos obligatorios no han sido informados"
