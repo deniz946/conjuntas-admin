@@ -40,7 +40,11 @@
               <tbody ng-repeat="user in users | filter:search|orderBy:'paid' track by $index">
                 <tr>
                   <td align="center">
-                    <a class="btn btn-success" ng-if="user.paid == false" ng-click="confirm(user)">Confirmar</a>
+                    <!-- <a class="btn btn-success" ng-if="user.paid == false" ng-click="confirm(user)">Confirmar</a> -->
+                    <div class="btn-group" ng-if="user.paid == false">
+                      <button type="button" class="btn btn-primary" ng-click="confirm(user)"><i class="fa fa-envelope-o"></i></button>
+                      <button type="button" class="btn btn-primary" ng-click="confirmWithoutMail(user)"><i class="fa fa-check"></i></button>
+                    </div>
                     <a class="btn disabled" ng-if="user.paid == true">Confirmado</a>
                   </td>
                   <td>{{user.username}}</td>

@@ -40,6 +40,13 @@ angular.module('myApp.detail', ['ngRoute'])
 		})
 	}
 
+	$scope.confirmWithoutMail = function(user){
+		$http.post(API + 'users/confirm/' + user.username + '/' + $routeParams.id, { paid: true }).then(function (err, response) {
+			if (err) console.log(err);
+			$route.reload();
+		})
+	}
+
 	$scope.reactivate = function (user) {
 		$http.post(API + 'users/confirm/' + user.username + '/' + $routeParams.id, { paid: false }).then(function (err, response) {
 			if (err) console.log(err);
