@@ -116,9 +116,10 @@
                     </td>
                     <td><a href="{{pack.link}}" target="_blank" >Enlace</a></td>
                     <td>
-                        <button class="btn btn-outline btn-xs" ng-class="{'btn-warning': !pack.finished, 'btn-danger': pack.finished}" ng-click="finishPack(pack)"><i class="fa" ng-class="{'fa-check': !pack.finished, 'fa-times': pack.finished}"></i></button>
-                        <button class="btn btn-outline btn-success btn-xs" ng-click="editItem(pack)"><i class="fa fa-pencil"></i></button>
-                        <button class="btn btn-outline btn-danger btn-xs" ng-click="deleteItem(pack)"><i class="fa fa-trash-o"></i></button>
+                        <button title="Finalizar pack" class="btn btn-outline btn-xs" ng-class="{'btn-warning': !pack.finished, 'btn-danger': pack.finished}" ng-click="finishPack(pack)"><i class="fa" ng-class="{'fa-check': !pack.finished, 'fa-times': pack.finished}"></i></button>
+                        <button title="Editar pack" class="btn btn-outline btn-success btn-xs" ng-click="editItem(pack)"><i class="fa fa-pencil"></i></button>
+                        <button title="Eliminar pack" class="btn btn-outline btn-danger btn-xs" ng-click="deleteItem(pack)"><i class="fa fa-trash-o"></i></button>
+                        <button title="Añadir comentario" class="btn btn-outline btn-info btn-xs" ng-click="addComment(pack)"><i class="fa fa-commenting-o"></i></button>
                     </td>
                 </tr>
             </tbody>
